@@ -1,4 +1,4 @@
-const contacts = require("./db/contacts");
+const contacts = require("./contacts");
 const { program } = require("commander");
 program
   .option("-a, --action <type>", "choose action")
@@ -20,7 +20,7 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
   switch (action) {
     case "list":
       const all = await contacts.listContacts();
-      console.log(all);
+      console.table(all);
       break;
     case "get":
       const oneContact = await contacts.getContactById(id);
@@ -41,20 +41,6 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
   }
 };
 invokeAction(argv);
-// invokeAction({ action: "listContacts" });
-// invokeAction({ action: "getContactById", contactId: "qdggE76Jtbfd9eWJHrssH" });
-// invokeAction({ action: "removeContact", contactId: "j4PMzBUkh9x2UrJW8PJn5" });
-// invokeAction({
-//   action: "addContact",
-//   name: "Volodymyr",
-//   email: "Volodymyr@gmail.com",
-//   phone: "(000) 111-2222",
-// });
 
-// const actionIndex = process.argv.indexOf('--action')
-// if (actionIndex !== -1) {
-//   const action = process.argv[actionIndex + 1]
-//   invokeAction({action})
-// }
 
 
