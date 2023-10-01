@@ -36,7 +36,7 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
       console.log(remove);
       break;
     default:
-      console.log("Unknown action");
+      console.warn("\x1B[31m Unknown action type!");
       break;
   }
 };
